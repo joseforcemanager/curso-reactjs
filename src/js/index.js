@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 // Load SCSS
 import '../scss/app.scss';
 
 class Main extends React.Component {
-  state={
+  state = {
     date:new Date(),
   }
 
@@ -25,20 +26,27 @@ class Main extends React.Component {
   }
 
   render() {
-    let {name} = this.props;
+    let {name,surname} = this.props;
     let {date} = this.state;
+    surname = surname ? surname : '';
+    let fullName = `${ name } ${ surname }`;
     return (
       <div className="main">
         <h1>Hola </h1>
-        <p className="italic">{name}</p>
+        <p className="italic">{fullName}</p>
         <p >It is {date.toLocaleTimeString()}.</p>
       </div>
     );
   }
 }
 
+Main.propTypes = {
+  name:PropTypes.string.isRequired,
+  surname:PropTypes.string,
+}
+
 // Render it to DOM
 ReactDOM.render(
-  <Main name="Jose Maria Compañy Garcia"/>,
+  <Main name="Jose Maria" surname="Compañy Garcia"/>,
   document.getElementById('root')
 );
