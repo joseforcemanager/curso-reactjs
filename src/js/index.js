@@ -33,8 +33,8 @@ class Main extends React.Component {
     return (
       <div className="main">
         <h1>Hola </h1>
-        <p className="italic">{fullName}</p>
-        <p >It is {date.toLocaleTimeString()}.</p>
+        <p>className="italic">{fullName}</p>
+        <p>It is {date.toLocaleTimeString()}.</p>
       </div>
     );
   }
