@@ -1,4 +1,4 @@
-## Datavision dashboard
+## React JS meetup
 
 ## Setup
 
@@ -24,5 +24,3 @@ Build will be placed in the `build` folder.
 ```bash
 $ npm run build
 ```
-##### Credits
-Configuration based on: <https://github.com/Stanko/react-redux-webpack2-boilerplate>
