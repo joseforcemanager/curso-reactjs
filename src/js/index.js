@@ -35,12 +35,20 @@ Message.propTypes = {
   text: PropTypes.string.isRequired,
 };
 
+Message.defaultProps = {
+  text:"Default",
+};
+
 
 
 /*Este no porque no se puede setter el contexto desde una componente funcional*/
 class MessageList extends React.Component {
   static propTypes = {
-    messages: PropTypes.array.isRequired,
+    messages: PropTypes.array,
+  };
+
+  static defaultProps = {
+        messages:[],
   };
 
   static childContextTypes = {
@@ -59,7 +67,7 @@ class MessageList extends React.Component {
   }
 }
 
-const messages = [{text:"uno"},{text:"dos"},{text:"tres"},{text:"cuatro"},{text:"cinco"},{text:"seis"}];
+const messages = [{text:"uno"},{text:"dos"},{text3:"tres"},{text:"cuatro"},{text:"cinco"},{text:"seis"}];
 
 // Render it to DOM
 ReactDOM.render(
