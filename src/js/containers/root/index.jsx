@@ -1,9 +1,11 @@
 import React from 'react';
 import LoginDialog from '../../components/login-dialog';
+import {LogPropsHOC} from '../../components/hoc';
 // Load SCSS
 import './index.scss';
 import 'es6-promise';
 
+const LoginDialogWithLog = LogPropsHOC(LoginDialog);
 
 const loginAsync = (name,password) => {
   return new Promise(resolve => {
@@ -45,7 +47,7 @@ class Main extends React.Component {
     const {loginLoading,loginError,isLogin } = this.state;
     return (
       <div className="main">
-        <LoginDialog loginAction = {this.login} loading={loginLoading} error={loginError}/>
+        <LoginDialogWithLog loginAction = {this.login} loading={loginLoading} error={loginError}/>
       </div>
     );
   }
