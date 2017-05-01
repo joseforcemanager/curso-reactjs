@@ -4,15 +4,22 @@ import PropTypes  from 'prop-types';
 // Load SCSS
 import '../scss/app.scss';
 
+/*
+constructor(props, context)
+componentWillReceiveProps(nextProps, nextContext)
+shouldComponentUpdate(nextProps, nextState, nextContext)
+componentWillUpdate(nextProps, nextState, nextContext)
+componentDidUpdate(prevProps, prevState, prevContext)
+*/
+
 class Button extends React.Component {
-  
-  static propTypes = {
-    color: PropTypes.string.isRequired,
-  }
+  static contextTypes = {
+    color: PropTypes.string
+  };
 
   render() {
     return (
-      <button style={{background: this.props.color}}>
+      <button style={{background: this.context.color}}>
         {this.props.children}
       </button>
     );
@@ -27,7 +34,7 @@ class Message extends React.Component {
   render() {
     return (
       <div>
-        {this.props.text} <Button color={this.props.color}>Delete</Button>
+        {this.props.text} <Button>Delete</Button>
       </div>
     );
   }
@@ -36,12 +43,19 @@ class Message extends React.Component {
 class MessageList extends React.Component {
   static propTypes = {
     messages: PropTypes.array.isRequired,
+  };
+
+  static childContextTypes = {
+    color: PropTypes.string
+  };
+
+  getChildContext() {
+    return {color: "yellow"};
   }
 
   render() {
-    const color = "red";
-    const children = this.props.messages.map((message) =>
-      <Message text={message.text} color={color} />
+    const children = this.props.messages.map((message,index) =>
+      <Message key={index} text={message.text}/>
     );
     return <div>{children}</div>;
   }
