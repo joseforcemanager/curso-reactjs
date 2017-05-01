@@ -23,11 +23,9 @@ const loginAsync = (name,password) => {
   });
 }
 
-
 const LoggedContainer = ({name}) =>(
   <div> Bienvenido {name}</div>
 );
-
 
 class Main extends React.Component {
   state = {
