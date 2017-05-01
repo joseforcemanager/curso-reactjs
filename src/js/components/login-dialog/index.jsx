@@ -7,22 +7,25 @@ export default class LoginDialog extends React.Component {
   static propTypes = {
     loginAction: PropTypes.func.isRequired,
     loading:PropTypes.bool,
-    error:PropTypes.bool,
+    error:PropTypes.string,
   }
 
   login = () => {
       const {loginAction} = this.props;
-      loginAction("joselito@pepe.com","nidecoña");
+      const {inputName,inputPassword} = this;
+      loginAction(inputName.value,inputPassword.value);
   }
 
   renderForm() {
+      const{error}=this.props;
       return (
             <div className="dialog">
                 <h2>Login</h2>
                 <div>
-                    <div className="row">Name: <input type="text"/></div>
-                    <div className="row">Password: <input type="text"/></div>
+                    <div className="row">Name: <input type="text" ref={(e)=>this.inputName = e}/></div>
+                    <div className="row">Password: <input type="text" ref={(e)=>this.inputPassword = e}/></div>
                     <div className="row"><input type="submit" value="Submit" onClick={this.login}/></div>
+                    <div className="row">{error}</div>
                 </div>
             </div>
       )
@@ -39,19 +42,8 @@ export default class LoginDialog extends React.Component {
       )
   }
 
-  renderError() {
-      return (
-            <div className="dialog">
-                <h2>Login</h2>
-                <div>
-                    Error
-                </div>
-            </div>
-      )
-  }
-
   render() {
-      const {loading,error} = this.props;
-      return loading?this.renderLoading():error?this.renderError():this.renderForm();
+      const {loading} = this.props;
+      return loading?this.renderLoading():this.renderForm();
   }
 }
