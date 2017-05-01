@@ -6,7 +6,14 @@ import '../scss/app.scss';
 
 class Main extends React.Component {
   state={
-    date:new Date().toLocaleTimeString(),
+    date:new Date(),
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    //return true;
+    //return false;
+    let {date} = nextState;
+    return date.getSeconds()%10===0;
   }
 
   componentDidMount(){
@@ -14,7 +21,7 @@ class Main extends React.Component {
   }
 
   tick = () =>{
-    this.setState({date:new Date().toLocaleTimeString()});
+    this.setState({date:new Date()});
   }
 
   render() {
@@ -24,7 +31,7 @@ class Main extends React.Component {
       <div className="main">
         <h1>Hola </h1>
         <p className="italic">{name}</p>
-        <p >It is {date}.</p>
+        <p >It is {date.toLocaleTimeString()}.</p>
       </div>
     );
   }
