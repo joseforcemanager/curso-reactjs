@@ -5,13 +5,26 @@ import ReactDOM from 'react-dom';
 import '../scss/app.scss';
 
 class Main extends React.Component {
+  state={
+    date:new Date().toLocaleTimeString(),
+  }
+
+  componentDidMount(){
+    setInterval(this.tick, 1000);
+  }
+
+  tick = () =>{
+    this.setState({date:new Date().toLocaleTimeString()});
+  }
+
   render() {
     let {name} = this.props;
+    let {date} = this.state;
     return (
       <div className="main">
         <h1>Hola </h1>
         <p className="italic">{name}</p>
-        <p >It is {new Date().toLocaleTimeString()}.</p>
+        <p >It is {date}.</p>
       </div>
     );
   }
