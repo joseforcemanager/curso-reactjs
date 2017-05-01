@@ -1,21 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// Load SCSS
-import '../scss/app.scss';
-
-class Main extends React.Component {
-  render() {
-    return (
-      <div className="main">
-        <h1>Hola mundo</h1>
-      </div>
-    );
-  }
-}
+import Root from './containers/root';
 
 // Render it to DOM
 ReactDOM.render(
-  <Main/>,
+  <Root/>,
   document.getElementById('root')
 );
