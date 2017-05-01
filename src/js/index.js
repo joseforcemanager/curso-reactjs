@@ -11,6 +11,7 @@ class Main extends React.Component {
       <div className="main">
         <h1>Hola </h1>
         <p className="italic">{name}</p>
+        <p >It is {new Date().toLocaleTimeString()}.</p>
       </div>
     );
   }
