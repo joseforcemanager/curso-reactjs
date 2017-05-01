@@ -4,10 +4,16 @@ import LoginDialog from '../../components/login-dialog';
 import './index.scss';
 
 class Main extends React.Component {
+
+  login = (name,password)=>{
+    debugger
+  }
+
+
   render() {
     return (
       <div className="main">
-        <LoginDialog/>
+        <LoginDialog loginAction = {this.login}/>
       </div>
     );
   }
