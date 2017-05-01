@@ -6,6 +6,8 @@ import './index.scss';
 export default class LoginDialog extends React.Component {  
   static propTypes = {
     loginAction: PropTypes.func.isRequired,
+    loading:PropTypes.bool,
+    error:PropTypes.bool,
   }
 
   login = () => {
@@ -13,7 +15,7 @@ export default class LoginDialog extends React.Component {
       loginAction("joselito@pepe.com","nidecoña");
   }
 
-  render() {
+  renderForm() {
       return (
             <div className="dialog">
                 <h2>Login</h2>
@@ -24,5 +26,32 @@ export default class LoginDialog extends React.Component {
                 </div>
             </div>
       )
+  }
+
+  renderLoading() {
+      return (
+            <div className="dialog">
+                <h2>Login</h2>
+                <div>
+                   Loading...
+                </div>
+            </div>
+      )
+  }
+
+  renderError() {
+      return (
+            <div className="dialog">
+                <h2>Login</h2>
+                <div>
+                    Error
+                </div>
+            </div>
+      )
+  }
+
+  render() {
+      const {loading,error} = this.props;
+      return loading?this.renderLoading():error?this.renderError():this.renderForm();
   }
 }

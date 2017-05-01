@@ -13,7 +13,7 @@ class Main extends React.Component {
   render() {
     return (
       <div className="main">
-        <LoginDialog loginAction = {this.login}/>
+        <LoginDialog loginAction = {this.login} /*loading={false} error={true}*//>
       </div>
     );
   }
