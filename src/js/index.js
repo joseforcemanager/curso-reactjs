@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes  from 'prop-types';
+
 // Load SCSS
 import '../scss/app.scss';
 
@@ -12,34 +13,31 @@ componentWillUpdate(nextProps, nextState, nextContext)
 componentDidUpdate(prevProps, prevState, prevContext)
 */
 
-class Button extends React.Component {
-  static contextTypes = {
-    color: PropTypes.string
-  };
+const Button = ({children}, context)=>(
+  <button style={{background: context.color}}>
+      {children}
+  </button>
+);
 
-  render() {
-    return (
-      <button style={{background: this.context.color}}>
-        {this.props.children}
-      </button>
-    );
-  }
-}
+Button.contextTypes = {
+  color: PropTypes.string,
+};
 
-class Message extends React.Component {
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-  }
 
-  render() {
-    return (
-      <div>
-        {this.props.text} <Button>Delete</Button>
-      </div>
-    );
-  }
-}
 
+const Message = ({text})=>(
+    <div>
+        {text} <Button>Delete</Button>
+    </div>
+);
+
+Message.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+
+
+/*Este no porque no se puede setter el contexto desde una componente funcional*/
 class MessageList extends React.Component {
   static propTypes = {
     messages: PropTypes.array.isRequired,
