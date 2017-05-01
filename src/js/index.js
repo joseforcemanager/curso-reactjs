@@ -6,9 +6,11 @@ import '../scss/app.scss';
 
 class Main extends React.Component {
   render() {
+    let {name} = this.props;
     return (
       <div className="main">
-        <h1>Hola mundo</h1>
+        <h1>Hola </h1>
+        <p className="italic">{name}</p>
       </div>
     );
   }
@@ -16,6 +18,6 @@ class Main extends React.Component {
 
 // Render it to DOM
 ReactDOM.render(
-  <Main/>,
+  <Main name="Jose Maria Compañy Garcia"/>,
   document.getElementById('root')
 );
